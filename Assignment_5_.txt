@@ -1,0 +1,290 @@
+1. Display Name of the salesperson, customer name and amount of sales.
+ERROR 1054 (42S22): Unknown column 'C.CUST_NAME' in 'field list'
+mysql> select emp.ename ,sales.custname,sales.amount from emp join sales on emp.empno = sales.repid;
++--------+----------------+----------+
+| ename  | custname       | amount   |
++--------+----------------+----------+
+| TURNER | JOCKSPORTS     |  1703.40 |
+| TURNER | JOCKSPORTS     |   485.00 |
+| TURNER | JOCKSPORTS     |   292.50 |
+| TURNER | JOCKSPORTS     |    50.00 |
+| TURNER | JOCKSPORTS     |   350.00 |
+| TURNER | JOCKSPORTS     |  2400.00 |
+| WARD   | TKB SPORT SHOP |    35.00 |
+| WARD   | TKB SPORT SHOP |     8.40 |
+| WARD   | TKB SPORT SHOP |    58.00 |
+| MARTIN | VOLLYRITE      |  3306.00 |
+| MARTIN | VOLLYRITE      | 16569.00 |
+| MARTIN | VOLLYRITE      |  2300.50 |
+| MARTIN | VOLLYRITE      |  5600.00 |
+| WARD   | JUST TENNIS    |   450.00 |
+| WARD   | JUST TENNIS    |   140.00 |
+| WARD   | JUST TENNIS    |   116.00 |
+| WARD   | JUST TENNIS    |    34.00 |
+| WARD   | JUST TENNIS    |    24.00 |
+| ALLEN  | EVERY MOUNTAIN |   846.80 |
+| ALLEN  | EVERY MOUNTAIN |    24.00 |
+| ALLEN  | EVERY MOUNTAIN |  3000.00 |
+| ALLEN  | EVERY MOUNTAIN |   810.00 |
+| ALLEN  | EVERY MOUNTAIN |  1500.00 |
+| ALLEN  | EVERY MOUNTAIN |   400.00 |
+| ALLEN  | EVERY MOUNTAIN |   240.00 |
+| ALLEN  | EVERY MOUNTAIN |   340.00 |
+| TURNER | K + T SPORTS   |  1750.00 |
+| TURNER | K + T SPORTS   |  4500.00 |
+| TURNER | K + T SPORTS   |  1400.00 |
+| TURNER | K + T SPORTS   |  2800.00 |
+| TURNER | K + T SPORTS   | 29000.00 |
+| TURNER | K + T SPORTS   |  2400.00 |
+| TURNER | K + T SPORTS   |  2500.00 |
+| TURNER | K + T SPORTS   |   340.00 |
+| TURNER | K + T SPORTS   |   480.00 |
+| TURNER | K + T SPORTS   |  1200.00 |
+| WARD   | SHAPE UP       |     2.40 |
+| WARD   | SHAPE UP       |   174.00 |
+| WARD   | SHAPE UP       |    84.00 |
+| WARD   | SHAPE UP       |   440.00 |
+| ALLEN  | WOMENS SPORTS  |   180.00 |
+| ALLEN  | WOMENS SPORTS  |   280.00 |
+| ALLEN  | WOMENS SPORTS  |   250.00 |
+| TURNER | NORTH WOODS    |   560.00 |
+| TURNER | NORTH WOODS    |  4800.00 |
+| TURNER | NORTH WOODS    |   600.00 |
+| TURNER | NORTH WOODS    |   440.00 |
++--------+----------------+----------+
+47 rows in set (0.02 sec)
+
+mysql>
+
+
+
+2. List employee name and name of managers.
+
+mysql> select e.ename as employee ,m.ename as manager from emp e join emp m on e.mgr = m.empno;
++----------+---------+
+| employee | manager |
++----------+---------+
+| GITA     | GRASS   |
+| VRUSHALI | GRASS   |
+| SHARMIN  | GRASS   |
+| BANDISH  | GRASS   |
+| SMITH    | FORD    |
+| AARAV    | FORD    |
+| THOMAS   | GRASS   |
+| ALLEN    | BLAKE   |
+| WARD     | BLAKE   |
+| JONES    | KING    |
+| MARTIN   | BLAKE   |
+| BLAKE    | KING    |
+| CLARK    | KING    |
+| SCOTT    | JONES   |
+| FRED     | KING    |
+| TURNER   | BLAKE   |
+| ADAMS    | SCOTT   |
+| Ruhan    | Ruhan   |
+| Neel     | KING    |
+| JAMES    | BLAKE   |
+| FORD     | JONES   |
+| HOFFMAN  | JONES   |
+| GRASS    | HOFFMAN |
+| MILLER   | CLARK   |
+| AARUSH   | FORD    |
+| ALEX     | BLAKE   |
+| NATASHA  | GRASS   |
+| SANGITA  | GRASS   |
+| SUPRIYA  | GRASS   |
++----------+---------+
+29 rows in set (0.01 sec)
+
+mysql>
+
+
+
+
+3. Display details of all departments and the corresponding employees
+
+
+mysql> select dept.deptno,dept.dname,emp.ename from dept left join emp on dept.deptno = emp.deptno;
++--------+------------+----------+
+| deptno | dname      | ename    |
++--------+------------+----------+
+|     10 | ACCOUNTING | AARAV    |
+|     10 | ACCOUNTING | THOMAS   |
+|     10 | ACCOUNTING | CLARK    |
+|     10 | ACCOUNTING | KING     |
+|     10 | ACCOUNTING | MILLER   |
+|     20 | RESEARCH   | SHARMIN  |
+|     20 | RESEARCH   | BANDISH  |
+|     20 | RESEARCH   | SMITH    |
+|     20 | RESEARCH   | JONES    |
+|     20 | RESEARCH   | SCOTT    |
+|     20 | RESEARCH   | FRED     |
+|     20 | RESEARCH   | ADAMS    |
+|     20 | RESEARCH   | FORD     |
+|     30 | SALES      | GITA     |
+|     30 | SALES      | ALLEN    |
+|     30 | SALES      | WARD     |
+|     30 | SALES      | MARTIN   |
+|     30 | SALES      | BLAKE    |
+|     30 | SALES      | TURNER   |
+|     30 | SALES      | JAMES    |
+|     30 | SALES      | HOFFMAN  |
+|     30 | SALES      | GRASS    |
+|     30 | SALES      | AARUSH   |
+|     30 | SALES      | ALEX     |
+|     30 | SALES      | NATASHA  |
+|     40 | OPERATIONS | NULL     |
+|     50 | HR         | VRUSHALI |
+|     50 | HR         | SANGITA  |
+|     50 | HR         | SUPRIYA  |
+|     60 | IT         | Ruhan    |
+|     60 | IT         | Neel     |
++--------+------------+----------+
+31 rows in set (0.01 sec)
+
+mysql
+
+
+
+
+4. Display all customer names with their order details (order number and ship date)
+for the orders shipped in 1987.
+
+
+mysql> SELECT CUSTOMER.CUST_NAME, ORDERS.ORDER_NO, ORDERS.SHIP_DATE
+    -> FROM CUSTOMER
+    -> JOIN ORDERS
+    -> ON CUSTOMER.CUST_ID = ORDERS.CUST_ID
+    -> WHERE YEAR(ORDERS.SHIP_DATE) = 1987;
+ERROR 1054 (42S22): Unknown column 'CUSTOMER.CUST_NAME' in 'field list'
+mysql>
+
+
+5. Display salesman names and names of customers they are dealing with.
+ERROR 1054 (42S22): Unknown column 's.num' in 'on clause'
+mysql> select s.sname, c.cname from salespeople s join  customers  c on s.snum = c.snum;
++---------+---------+
+| sname   | cname   |
++---------+---------+
+| James   | Saleel  |
+| James   | Nitish  |
+| Rajan   | Santosh |
+| Alax    | Joe     |
+| Natasha | Raj     |
+| Natasha | Grass   |
+| Rajan   | Raja    |
+| Monika  | Jackson |
+| James   | William |
+| James   | Smith   |
+| James   | ADAMS   |
++---------+---------+
+11 rows in set (0.05 sec)
+
+mysql>
+
+
+
+6. Display salesman who did not earn commission, with customer names whom they
+are dealing with.
+
+mysql> select s.sname,c.cname from salespeople s join customers c on s.snum = c.snum where s.comm =0;
+Empty set (0.02 sec)
+
+
+7. Display salesman names, salary, commission and their salary grades.
+
+
+mysql> SELECT e.ename, e.sal, e.comm, s.grade
+    -> FROM emp e
+    -> JOIN salgrade s
+    -> ON e.sal BETWEEN s.losal AND s.hisal
+    -> WHERE e.job = 'SALESMAN';
++--------+------+------+-------+
+| ename  | sal  | comm | grade |
++--------+------+------+-------+
+| MARTIN | 1375 | 1400 |     2 |
+| WARD   | 1375 |  500 |     2 |
+| AARUSH | 1485 | 2700 |     3 |
+| TURNER | 1650 |    0 |     3 |
+| ALLEN  | 1760 |  300 |     3 |
+| GRASS  | 2833 | 2700 |     4 |
++--------+------+------+-------+
+6 rows in set (0.06 sec)
+
+mys
+
+
+
+
+8. Display all Tennis products and their price details (standard and minimum price).
+
+mysql> SELECT p.productname,
+    ->        pr.listprice AS standard_price,
+    ->        pr.minprice
+    -> FROM productinformation p
+    -> JOIN productprices pr
+    -> ON p.productid = pr.productid
+    -> WHERE p.productname LIKE '%Tennis%';
+ERROR 1146 (42S02): Table 'data1.productinformation' doesn't exist
+my
+
+
+
+
+
+9. Display the products purchased by either JOCKSPORTS (customer number 100) or
+JUST TENNIS (customer number 103) or both of them.
+
+    -> WHERE o.custid IN (100,103);
++--------+-------------------------+-------+
+| prodid | descrip                 | price |
++--------+-------------------------+-------+
+| 102130 | RH: "GUIDE TO TENNIS"   |   145 |
+| 100861 | ACE TENNIS RACKET II    |   105 |
+| 100870 | ACE TENNIS BALLS-3 PACK |   125 |
+| 100890 | ACE TENNIS NET          |   150 |
+| 100860 | ACE TENNIS RACKET I     |   110 |
+| 200376 | SB ENERGY BAR-6 PACK    |   110 |
++--------+-------------------------+-------+
+6 rows in set (0.05 sec)
+
+mysql>
+
+
+10.Display the department name, and salary of any employee whose salary and
+commission matches both the salary and commission of any employee in DALLAS.
+
+mysql> select sal,comm from emp e2 join dept d2 on e2.deptno = d2.deptno where d2.loc = 'dallas';
++------+------+
+| sal  | comm |
++------+------+
+| 1925 | NULL |
+| 1925 | NULL |
+|  880 | NULL |
+| 3273 | NULL |
+| 3300 | NULL |
+| 5500 | NULL |
+| 1210 | NULL |
+| 3300 | NULL |
++------+------+
+8 rows in set (0.00 sec)
+
+my
+
+
+
+11. List out the common jobs in Research and Accounting Departments in ascending
+order.
+
+
+mysql> select distinct job from emp where deptno = 20 and job in(select job from emp where deptno =10) order by job asc;
++---------+
+| job     |
++---------+
+| CLERK   |
+| MANAGER |
++---------+
+2 rows in set (0.00 sec)
+
+mysql
+
